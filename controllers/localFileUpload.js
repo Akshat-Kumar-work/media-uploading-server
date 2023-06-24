@@ -12,10 +12,11 @@ exports.localfileupload = async(req, res)=>{
         // __dirname means current directory in this controllers folder is current directory
         //controllers k andar files naam k folder k andar current date or time par
         //last m extension lagaya hai file m name k andar split kardo . k basis par aur 1st index ki value dedo
-        let path = __dirname + "/files/" + Date.now() + `${file.name.split('.' [1])}`
+        let path = __dirname + "/files/" + Date.now() + `.${file.name.split('.')[1]}`
         
         
         //file ko move karna hai ess path par , mv() it is used to move file
+        //file ko req se move krwa dia hai server k path par save karne k liye
         file.mv(path , (err)=>{
             console.log(err)
         })
