@@ -24,7 +24,8 @@ exports.imageUpload = async(req, res)=>{
         //fetching data from req to  create entry in db
         const {name , tag , email} = req.body;
         //fetching img file from req files , to upload it to cloudinary
-        const file = req.files.img;
+        const file = req.files.imgfile
+        
         //validation for img supported type
         const supportedTypes = ['jpg','jpeg','png'];
         const currentFileType = `${file.name.split(".")[1]}`
