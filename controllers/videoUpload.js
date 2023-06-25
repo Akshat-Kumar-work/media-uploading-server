@@ -14,18 +14,18 @@ exports.videoUpload = async(req, res)=>{
      const currentFileType = file.name.split(".")[1];
  
      //agar file type support nahi karta
-    //  if(!fileTypeSupported.includes(currentFileType)){
-    //      return res.status(400).json({
-    //          success:false,
-    //          message:"file type not supported"
-    //      })
-    //  }
+     if(!fileTypeSupported.includes(currentFileType)){
+         return res.status(400).json({
+             success:false,
+             message:"file type not supported"
+         })
+     }
  
      const options = {folder:"mediaServer"};
      options.resource_type = "auto";
      //agar support karta hai toh cloudinary par upload krdo
      const response =  await cloudinary.uploader.upload(file.tempFilePath , options);
-    console.log(response)
+    
      //db m entry create krdo
      const filedata = await File.create({ name , email , tag , fileUrl:response.secure_url})
      
