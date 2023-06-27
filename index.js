@@ -27,9 +27,11 @@ server.use("/api/v1",mediaRoutes);
 const db_connect  = require("./config/db");
  db_connect()
 
+ //calling cloudinary 
 const cloudinary = require("./config/cloudinary")
 cloudinary.cloudinaryConnect()
 
+//server starting
 server.listen(port , ()=>{
     console.log("server is ON");
 })
